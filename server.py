@@ -1,14 +1,58 @@
-from socket import *
-import time
+import yaml
+import socket
+import json
+from argparse import ArgumentParser
 
-s = socket(AF_INET, SOCK_STREAM)  # Создает сокет TCP
-s.bind(('', 7777))                # Присваивает порт 8888
-s.listen(5)                       # Переходит в режим ожидания запросов;
-                                  # одновременно обслуживает не более
-                                  # 5 запросов.
-while True:
-    client, addr = s.accept()     # Принять запрос на соединение
-    print("Получен запрос на соединение от %s" % str(addr))
-    timestr = time.ctime(time.time()) + "\n"
-    client.send(timestr.encode('ascii'))
+
+parser = ArgumentParser(usage='python %(prog)s [options]')
+parser.add_argument(
+    '-c', '--config', type=str,
+    help='Sets run configuration file'
+)
+parser.add_argument(
+    '-p', '--port', type=int,
+    default=7777,
+    help='TCP port to work server. Default: 7777'
+)
+parser.add_argument(
+    '-a', '--ip_address', type=str,
+    default='127.0.0.1',
+    help='Network interface to work server (IP address). Default: 127.0.0.1'
+)
+
+args = parser.parse_args()
+
+host = args.ip_address
+port = args.port
+buffersize = 4096
+encoding = 'utf-8'
+
+if args.config:
+    with open(args.config) as file:
+        config = yaml.load(file, Loader=yaml.Loader)
+        host = config.get('host')
+        port = config.get('port')
+
+
+try:
+    sock = socket.socket()
+
+    sock.bind((host, port))
+    sock.listen(5)
+    print(f'Server was started with {host}:{port}')
+
+    while True:
+        client, address = sock.accept()
+        print(f'Client was detected {address}')
+        data = client.recv(buffersize)
+        message = json.loads(data)
+        alert = "OK! Hello, " + message['user']['account_name']
+        response = {
+                "response": 200,
+                "alert": alert,
+        }
+        mes = json.dumps(response)
+        client.send(mes.encode(encoding))
+        client.close()
+except KeyboardInterrupt:
     client.close()
