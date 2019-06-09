@@ -1,6 +1,7 @@
 import yaml
 import socket
 import json
+from actions import resolve
 from argparse import ArgumentParser
 
 
@@ -44,15 +45,17 @@ try:
     while True:
         client, address = sock.accept()
         print(f'Client was detected {address}')
-        data = client.recv(buffersize)
-        message = json.loads(data)
-        alert = "OK! Hello, " + message['user']['account_name']
-        response = {
-                "response": 200,
-                "alert": alert,
-        }
+        b_request = client.recv(buffersize)
+        request = json.loads(b_request.decode(encoding))
+
+        action_name = request.get('action')
+
+        controller = resolve(action_name)
+
+        response = controller(request)
+
         mes = json.dumps(response)
         client.send(mes.encode(encoding))
         client.close()
 except KeyboardInterrupt:
-    client.close()
+    pass
