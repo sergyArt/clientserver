@@ -1,7 +1,7 @@
 import yaml
 import socket
 import json
-import datetime
+from datetime import datetime
 from argparse import ArgumentParser
 
 
@@ -37,22 +37,17 @@ try:
     sock = socket.socket()
     sock.connect((host, port))
     print('Client started')
-    username = input('Enter your name: ')
-    message = {
-               "action": "presence",
-               "time": str(datetime.datetime.now()),
-                "type": "status",
-                "user": {
-                            "account_name": username,
-                            "status": "Yep, I am here!"
-                }
-
+    action = input('Enter action: ')
+    data = input('Enter data: ')
+    request = {
+        'action': action,
+        'data': data,
+        'time': datetime.now().timestamp()
     }
-    data = json.dumps(message)
-    sock.send(data.encode(encoding))
+    s_request = json.dumps(request)
+    sock.send(s_request.encode(encoding))
     response = sock.recv(buffersize)
     answer = json.loads(response.decode(encoding))
-    print(answer['response'])
-    print(answer['alert'])
+    print(answer)
 except KeyboardInterrupt:
     pass

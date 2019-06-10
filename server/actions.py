@@ -19,7 +19,7 @@ def get_server_actions():
 def resolve(action_name, actions=None):
     action_list =  actions or get_server_actions()
     action_mapping = {
-        action.get('name'):action.get('controller')
+        action.get('action'): action.get('controller')
         for action in action_list
     }
     return action_mapping.get(action_name)

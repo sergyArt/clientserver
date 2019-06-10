@@ -2,6 +2,7 @@ import yaml
 import socket
 import json
 from actions import resolve
+from protocol import validate_request, make_response
 from argparse import ArgumentParser
 
 
@@ -48,11 +49,20 @@ try:
         b_request = client.recv(buffersize)
         request = json.loads(b_request.decode(encoding))
 
-        action_name = request.get('action')
+        if validate_request(request):
+            action_name = request.get('action')
 
-        controller = resolve(action_name)
-
-        response = controller(request)
+            controller = resolve(action_name)
+            if controller:
+                try:
+                    response = controller(request)
+                except Exception as err:
+                    print(err)
+                    response = make_response(request, 500, 'Internal server error')
+            else:
+                response = make_response(request, 404, 'Action not found')
+        else:
+            make_response(request, 400, 'Wrong request')
 
         mes = json.dumps(response)
         client.send(mes.encode(encoding))
