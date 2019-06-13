@@ -4,6 +4,7 @@ import json
 from actions import resolve
 from protocol import validate_request, make_response
 from argparse import ArgumentParser
+from server_log_config import logger
 
 
 parser = ArgumentParser(usage='python %(prog)s [options]')
@@ -41,11 +42,13 @@ try:
 
     sock.bind((host, port))
     sock.listen(5)
+    logger.info(f'Server was started with {host}:{port}')
     print(f'Server was started with {host}:{port}')
 
     while True:
         client, address = sock.accept()
-        print(f'Client was detected {address}')
+        #print(f'Client was detected {address}')
+        logger.info(f'Client was detected {address}')
         b_request = client.recv(buffersize)
         request = json.loads(b_request.decode(encoding))
 
@@ -57,12 +60,17 @@ try:
                 try:
                     response = controller(request)
                 except Exception as err:
-                    print(err)
+                    logger.error(f'Detected error: {err}')
+                    #print(err)
                     response = make_response(request, 500, 'Internal server error')
             else:
+                logger.error(f'Detected error: Action not found, code 404')
                 response = make_response(request, 404, 'Action not found')
         else:
+            logger.error(f'Detected error: Wrong request, code 400')
             make_response(request, 400, 'Wrong request')
+
+
 
         mes = json.dumps(response)
         client.send(mes.encode(encoding))
