@@ -1,0 +1,5 @@
+2019-06-17 00:22:13,884 - INFO - Client was detected ('127.0.0.1', 55238)}
+2019-06-17 00:22:17,662 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1560720137.656186}}
+2019-06-17 00:24:04,398 - INFO - Client was detected ('127.0.0.1', 55248)}
+2019-06-17 00:24:08,773 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1560720248.760555}}
+2019-06-17 00:24:08,774 - DEBUG -  Функция get_echo вызвана из logger_required}
