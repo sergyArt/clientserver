@@ -1,0 +1,71 @@
+2019-06-17 00:22:13,884 - INFO - Client was detected ('127.0.0.1', 55238)}
+2019-06-17 00:22:17,662 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1560720137.656186}}
+2019-06-17 00:24:04,398 - INFO - Client was detected ('127.0.0.1', 55248)}
+2019-06-17 00:24:08,773 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1560720248.760555}}
+2019-06-17 00:24:08,774 - DEBUG -  Функция get_echo вызвана из logger_required}
+2019-06-20 22:41:15,340 - INFO - client with address ('127.0.0.1', 32850) was detected.
+2019-06-20 22:44:04,356 - INFO - client with address ('127.0.0.1', 32866) was detected.
+2019-06-20 22:46:06,299 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561059848.098186}
+2019-06-20 22:46:06,300 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 22:46:24,307 - INFO - client with address ('127.0.0.1', 32876) was detected.
+2019-06-20 22:46:43,234 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561059987.68674}
+2019-06-20 22:46:43,234 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:27:23,788 - INFO - client with address ('127.0.0.1', 33010) was detected.
+2019-06-20 23:27:27,924 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561062447.923162}
+2019-06-20 23:27:27,924 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:30:05,130 - INFO - client with address ('127.0.0.1', 33022) was detected.
+2019-06-20 23:31:19,264 - INFO - client with address ('127.0.0.1', 33024) was detected.
+2019-06-20 23:31:22,947 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561062682.945677}
+2019-06-20 23:31:22,947 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:32:52,934 - INFO - client with address ('127.0.0.1', 33028) was detected.
+2019-06-20 23:32:57,506 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561062777.504851}
+2019-06-20 23:32:57,506 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:35:32,219 - INFO - client with address ('127.0.0.1', 33036) was detected.
+2019-06-20 23:35:36,261 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561062936.260472}
+2019-06-20 23:35:36,261 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:37:34,535 - INFO - client with address ('127.0.0.1', 33046) was detected.
+2019-06-20 23:37:37,943 - DEBUG - get_echo: {'action': 'echo', 'data': 'tet', 'time': 1561063057.94169}
+2019-06-20 23:37:37,943 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:38:42,527 - INFO - client with address ('127.0.0.1', 33056) was detected.
+2019-06-20 23:38:45,987 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561063125.986633}
+2019-06-20 23:38:45,987 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:46:06,836 - INFO - client with address ('127.0.0.1', 33152) was detected.
+2019-06-20 23:47:21,273 - INFO - client with address ('127.0.0.1', 33160) was detected.
+2019-06-20 23:51:54,593 - INFO - client with address ('127.0.0.1', 33178) was detected.
+2019-06-20 23:51:57,465 - INFO - client with address ('127.0.0.1', 33180) was detected.
+2019-06-20 23:52:04,548 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561063924.547205}
+2019-06-20 23:52:04,548 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:53:30,806 - INFO - client with address ('127.0.0.1', 33188) was detected.
+2019-06-20 23:53:35,454 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561064015.453272}
+2019-06-20 23:53:35,454 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:53:51,126 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561064031.126056}
+2019-06-20 23:53:51,126 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-20 23:54:10,565 - INFO - client with address ('127.0.0.1', 33194) was detected.
+2019-06-20 23:54:23,139 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561064063.139601}
+2019-06-20 23:54:23,139 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 00:05:52,962 - INFO - client with address ('127.0.0.1', 33214) was detected.
+2019-06-21 00:06:01,012 - INFO - client with address ('127.0.0.1', 33216) was detected.
+2019-06-21 15:41:08,602 - INFO - client with address ('127.0.0.1', 33354) was detected.
+2019-06-21 15:41:13,577 - INFO - client with address ('127.0.0.1', 33356) was detected.
+2019-06-21 15:42:49,551 - INFO - client with address ('127.0.0.1', 33366) was detected.
+2019-06-21 15:42:54,617 - INFO - client with address ('127.0.0.1', 33368) was detected.
+2019-06-21 15:43:02,958 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561120982.914202}
+2019-06-21 15:43:02,958 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 15:47:17,838 - INFO - client with address ('127.0.0.1', 33378) was detected.
+2019-06-21 15:47:20,926 - INFO - client with address ('127.0.0.1', 33380) was detected.
+2019-06-21 15:47:30,863 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561121250.862321}
+2019-06-21 15:47:30,863 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 15:50:50,333 - INFO - client with address ('127.0.0.1', 33480) was detected.
+2019-06-21 15:50:52,800 - INFO - client with address ('127.0.0.1', 33482) was detected.
+2019-06-21 15:51:01,123 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561121461.121969}
+2019-06-21 15:51:01,123 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 15:52:41,834 - INFO - client with address ('127.0.0.1', 33486) was detected.
+2019-06-21 15:52:44,259 - INFO - client with address ('127.0.0.1', 33488) was detected.
+2019-06-21 15:52:54,621 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561121574.620251}
+2019-06-21 15:52:54,621 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 15:54:14,671 - INFO - client with address ('127.0.0.1', 33496) was detected.
+2019-06-21 15:54:18,248 - INFO - client with address ('127.0.0.1', 33498) was detected.
+2019-06-21 15:54:26,372 - DEBUG - get_echo: {'action': 'echo', 'data': 'test', 'time': 1561121666.371504}
+2019-06-21 15:54:26,372 - DEBUG -  Функция get_echo вызвана из logger_required
+2019-06-21 15:54:44,370 - DEBUG - get_echo: {'action': 'echo', 'data': 'some text', 'time': 1561121684.370486}
+2019-06-21 15:54:44,370 - DEBUG -  Функция get_echo вызвана из logger_required
