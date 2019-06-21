@@ -11,6 +11,11 @@ parser.add_argument(
     help='Sets run configuration file'
 )
 parser.add_argument(
+    '-m', '--mode', type=str, default='w',
+    help='Sets client mode'
+)
+
+parser.add_argument(
     '-p', '--port', type=int,
     default=7777,
     help='TCP port to work server. Default: 7777'
@@ -37,17 +42,22 @@ try:
     sock = socket.socket()
     sock.connect((host, port))
     print('Client started')
-    action = input('Enter action: ')
-    data = input('Enter data: ')
-    request = {
-        'action': action,
-        'data': data,
-        'time': datetime.now().timestamp()
-    }
-    s_request = json.dumps(request)
-    sock.send(s_request.encode(encoding))
-    response = sock.recv(buffersize)
-    answer = json.loads(response.decode(encoding))
-    print(answer)
+
+    if args.mode == 'w':
+        while True:
+            action = input('Enter action: ')
+            data = input('Enter data: ')
+            request = {
+                'action': action,
+                'data': data,
+                'time': datetime.now().timestamp()
+            }
+            s_request = json.dumps(request)
+            sock.send(s_request.encode(encoding))
+    else:
+        while True:
+            response = sock.recv(buffersize)
+            answer = json.loads(response.decode(encoding))
+            print(answer)
 except KeyboardInterrupt:
     pass
