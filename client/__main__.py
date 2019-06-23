@@ -1,6 +1,7 @@
 import yaml
 import socket
 import json
+import threading
 from datetime import datetime
 from argparse import ArgumentParser
 
@@ -32,6 +33,26 @@ port = args.port
 buffersize = 4096
 encoding = 'utf-8'
 
+def read():
+    while True:
+        response = sock.recv(buffersize)
+        answer = json.loads(response.decode(encoding))
+        print(answer)
+
+def write():
+    while True:
+        action = input('Enter action: ')
+        data = input('Enter data: ')
+        request = {
+            'action': action,
+            'data': data,
+            'time': datetime.now().timestamp()
+        }
+        s_request = json.dumps(request)
+        sock.send(s_request.encode(encoding))
+
+
+
 if args.config:
     with open(args.config) as file:
         config = yaml.load(file, Loader=yaml.Loader)
@@ -44,20 +65,12 @@ try:
     print('Client started')
 
     if args.mode == 'w':
-        while True:
-            action = input('Enter action: ')
-            data = input('Enter data: ')
-            request = {
-                'action': action,
-                'data': data,
-                'time': datetime.now().timestamp()
-            }
-            s_request = json.dumps(request)
-            sock.send(s_request.encode(encoding))
+        write()
+    elif args.mode == 'rw':
+        rthread = threading.Thread(target=read, daemon=True)
+        rthread.start()
+        write()
     else:
-        while True:
-            response = sock.recv(buffersize)
-            answer = json.loads(response.decode(encoding))
-            print(answer)
+        read()
 except KeyboardInterrupt:
     pass

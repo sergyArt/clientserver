@@ -6,6 +6,7 @@ import select
 from actions import resolve
 from protocol import validate_request, make_response
 from argparse import ArgumentParser
+import threading
 
 
 logging.basicConfig(
@@ -52,6 +53,16 @@ if args.config:
 requests =[]
 connections = []
 
+
+def read(client, requests, buffersize):
+    b_request = client.recv(buffersize)
+    requests.append(b_request)
+
+def write(client, response):
+    client.send(response)
+
+
+
 try:
     sock = socket.socket()
 
@@ -73,8 +84,10 @@ try:
         rlist, wlist, xlist = select.select(connections, connections, connections, 0)
 
         for r_client in rlist:
-            b_request = r_client.recv(buffersize)
-            requests.append(b_request)
+            rthread = threading.Thread(target=read, args=(r_client, requests, buffersize))
+            rthread.start()
+            #b_request = r_client.recv(buffersize)
+            #requests.append(b_request)
 
         if requests:
             n_request = requests.pop()
@@ -94,14 +107,18 @@ try:
                     response = make_response(request, 404, 'Action not found')
                 w_mes = json.dumps(response)
                 for w_client in wlist:
-                    w_client.send(w_mes.encode(encoding))
+                    wthread = threading.Thread(target=write, args=(w_client, w_mes.encode(encoding)))
+                    wthread.start()
+                    #w_client.send(w_mes.encode(encoding))
             else:
                 logging.error(f'Detected error: Wrong request, code 400')
                 w_response = make_response(request, 400, 'Wrong request')
                 mes = json.dumps(w_response)
                 #print('mes: ', mes)
                 for w_client in wlist:
-                    w_client.send(mes.encode(encoding))
+                    wthread = threading.Thread(target=write, args=(w_client, mes.encode(encoding)))
+                    wthread.start()
+                    #w_client.send(mes)
 
 except KeyboardInterrupt:
     pass
